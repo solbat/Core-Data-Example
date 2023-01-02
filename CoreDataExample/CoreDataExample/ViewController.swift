@@ -78,7 +78,14 @@ class ViewController: UIViewController {
     }
     
     func deleteItem(item: ToDoListItem) {
+        context.delete(item)
         
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            
+        }
     }
     
     func updateItem(item: ToDoListItem) {
