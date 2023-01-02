@@ -9,12 +9,25 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    let tableView: UITableView = {
+        let table = UITableView()
+        table.register(UITableViewCell.self, forCellReuseIdentifier: "cell")
+        return table
+    }()
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
     
-    func getAllItems() {
+    func configureView() {
+        title = "Core Data To Do List"
+        view.addSubview(tableView)
+        tableView.frame = view.bounds
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add,
+                                                            target: self,
+                                                            action: #selector(didTapAdd))
+    }
         
     }
     
