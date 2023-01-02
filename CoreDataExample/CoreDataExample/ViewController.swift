@@ -88,8 +88,15 @@ class ViewController: UIViewController {
         }
     }
     
-    func updateItem(item: ToDoListItem) {
+    func updateItem(item: ToDoListItem, newName: String) {
+        item.name = newName
         
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            
+        }
     }
 }
 
