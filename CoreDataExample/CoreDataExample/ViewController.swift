@@ -51,6 +51,17 @@ class ViewController: UIViewController {
         present(alert, animated: true)
     }
     
+    // Core Data
+    func getAllItems() {
+        do {
+            models = try context.fetch(ToDoListItem.fetchRequest())
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+        } catch {
+            // error
+        }
     }
     
     func createItem(name: String) {
