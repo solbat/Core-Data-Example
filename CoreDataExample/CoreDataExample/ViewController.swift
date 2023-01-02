@@ -34,7 +34,23 @@ class ViewController: UIViewController {
         tableView.dataSource = self
     }
     
+    @objc private func didTapAdd() {
+        let alert = UIAlertController(title: "New Item",
+                                      message: "Enter new item",
+                                      preferredStyle: .alert)
         
+        alert.addTextField(configurationHandler: nil)
+        alert.addAction(UIAlertAction(title: "Submit", style: .cancel, handler: { [weak self] _ in
+            guard let field = alert.textFields?.first, let text = field.text, !text.isEmpty else {
+                return
+            }
+            
+            self?.createItem(name: text)
+        }))
+        
+        present(alert, animated: true)
+    }
+    
     }
     
     func createItem(name: String) {
