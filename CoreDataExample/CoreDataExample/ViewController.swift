@@ -65,7 +65,16 @@ class ViewController: UIViewController {
     }
     
     func createItem(name: String) {
+        let newItem = ToDoListItem(context: context)
+        newItem.name = name
+        newItem.createdAt = Date()
         
+        do {
+            try context.save()
+            getAllItems()
+        } catch {
+            
+        }
     }
     
     func deleteItem(item: ToDoListItem) {
