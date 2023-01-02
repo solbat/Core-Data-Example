@@ -147,3 +147,13 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
             
             self.present(alert, animated: true)
         }))
+        // Delete
+        sheet.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            self?.deleteItem(item: item)
+        }))
+        // Cancel
+        sheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        
+        present(sheet, animated: true)
+    }
+}
